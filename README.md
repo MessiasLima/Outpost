@@ -34,6 +34,16 @@ Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
 - Desktop tests: `./gradlew :outpost:jvmTest`
 - iOS tests: `./gradlew :outpost:iosSimulatorArm64Test`
 
+### Static analysis
+
+This project uses [Detekt](https://detekt.dev/) for Kotlin static analysis. The Detekt plugin is applied to every module and runs with auto-correction and the formatting rule set enabled.
+
+Run Detekt from the repository root:
+
+```bash
+./gradlew detekt
+```
+
 ---
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…

@@ -5,6 +5,7 @@ import kotlin.test.assertEquals
 
 class SharedLogicAndroidHostTest {
 
+    @Suppress("MagicNumber")
     @Test
     fun example() {
         assertEquals(3, 1 + 2)

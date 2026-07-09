@@ -1,3 +1,5 @@
+@file:Suppress("Filename")
+
 package dev.appoutlet.outpost.kotlin.desktop
 
 import androidx.compose.ui.window.Window
