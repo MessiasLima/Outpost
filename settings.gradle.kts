@@ -1,4 +1,4 @@
-rootProject.name = "Outpost"
+rootProject.name = "OutpostRoot"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -32,6 +32,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-include(":androidApp")
-include(":desktopApp")
-include(":shared")
+include(":kotlin-outpost:android")
+include(":kotlin-outpost:desktop")
+include(":kotlin-outpost:shared")
+include(":outpost")
