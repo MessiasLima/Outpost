@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.detekt)
 }
 
 compose.resources {
@@ -56,10 +55,4 @@ kotlin {
 
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
-    detektPlugins(libs.detekt.formatting)
-}
-
-detekt {
-    autoCorrect = true
-    config.from(files("$rootDir/detekt.yml"))
 }
