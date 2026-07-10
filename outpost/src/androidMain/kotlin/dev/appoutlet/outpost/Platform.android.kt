@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package dev.appoutlet.outpost
 
 import android.os.Build
