@@ -19,6 +19,7 @@ dependencies {
 
 detekt {
     autoCorrect = true
+    config.from(files("$rootDir/detekt.yml"))
 }
 
 compose.desktop {

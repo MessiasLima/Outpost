@@ -22,7 +22,6 @@ import dev.appoutlet.outpost.generated.resources.Res
 import dev.appoutlet.outpost.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.painterResource
 
-@Suppress("FunctionNaming")
 @Composable
 @Preview
 fun App() {
