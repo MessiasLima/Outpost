@@ -46,7 +46,7 @@ Run Detekt from the repository root:
 
 ### Security
 
-If you discover a security vulnerability, please review our [Security Policy](./SECURITY.md) for responsible disclosure instructions.
+If you discover a security vulnerability in Outpost or in any app built on top of Outpost, please review our [Security Policy](./SECURITY.md) for responsible disclosure instructions.
 
 ### License
 
