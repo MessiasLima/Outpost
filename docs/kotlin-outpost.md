@@ -24,3 +24,7 @@ This separation makes it easier to evolve Outpost as a white-label product: shar
 - Trending Kotlin repositories
 - Community discussions from Reddit, Stack Overflow, and Twitter
 - A job board for Kotlin roles
+
+## Design
+
+The design is being created on https://app.paper.design/file/01KX679ZGN7DVPFYHXGAPTDE0K/1-0
