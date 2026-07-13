@@ -44,6 +44,10 @@ Run Detekt from the repository root:
 ./gradlew detekt
 ```
 
+### License
+
+Outpost and all the apps made with it are licensed under the [GNU General Public License v3.0](./LICENSE).
+
 ---
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
