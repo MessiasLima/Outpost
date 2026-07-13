@@ -44,6 +44,10 @@ Run Detekt from the repository root:
 ./gradlew detekt
 ```
 
+### Security
+
+If you discover a security vulnerability in Outpost or in any app built on top of Outpost, please review our [Security Policy](./SECURITY.md) for responsible disclosure instructions.
+
 ### License
 
 Outpost and all the apps made with it are licensed under the [GNU General Public License v3.0](./LICENSE).
