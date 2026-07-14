@@ -33,7 +33,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.outpost)
+            implementation(projects.outpostCore)
             implementation(libs.compose.runtime)
         }
         commonTest.dependencies {
