@@ -14,7 +14,7 @@ detekt = "1.23.8"
 junit = "4.13.2"
 kotlin = "2.4.0"
 kotlinx-coroutines = "1.11.0"
-material3 = "1.11.0-alpha07"
+material3 = "1.13.0-alpha01"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
