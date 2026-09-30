@@ -1,8 +1,8 @@
 [versions]
-agp = "9.0.1"
-android-compileSdk = "36"
+agp = "9.4.1"
+android-compileSdk = "37"
 android-minSdk = "24"
-android-targetSdk = "36"
+android-targetSdk = "37"
 androidx-activity = "1.13.0"
 androidx-appcompat = "1.7.1"
 androidx-core = "1.19.0"
@@ -40,8 +40,8 @@ kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-s
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
-composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

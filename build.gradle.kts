@@ -3,8 +3,8 @@ plugins {
     // in each subproject's classloader
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.multiplatform.library) apply false
-    alias(libs.plugins.composeMultiplatform) apply false
-    alias(libs.plugins.composeCompiler) apply false
+    alias(libs.plugins.compose) apply false
+    alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.detekt) apply false
     alias(libs.plugins.kotlinJvm) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
