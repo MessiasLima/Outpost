@@ -11,6 +11,27 @@ updates:
       - "dependencies"
     commit-message:
       prefix: "deps"
+    # Compose Multiplatform libraries are pinned to the same release as the
+    # `org.jetbrains.compose` plugin, which is intentionally left un-ignored:
+    # when its update PR shows up, bump the libraries below by hand to match.
+    # Coordinates are the `group:artifact` pairs from the release "Libraries" table:
+    # https://github.com/JetBrains/compose-multiplatform/releases
+    # (Catalog plugins are matched by their bare plugin id with no colon, so
+    #  these patterns never match `org.jetbrains.compose` itself.)
+    ignore:
+      - dependency-name: "org.jetbrains.compose.runtime:*"
+      - dependency-name: "org.jetbrains.compose.ui:*"
+      - dependency-name: "org.jetbrains.compose.foundation:*"
+      - dependency-name: "org.jetbrains.compose.material:*"
+      - dependency-name: "org.jetbrains.compose.material3:*"
+      - dependency-name: "org.jetbrains.compose.material3.adaptive:*"
+      - dependency-name: "org.jetbrains.compose.components:*"
+      - dependency-name: "org.jetbrains.androidx.lifecycle:*"
+      - dependency-name: "org.jetbrains.androidx.navigation:*"
+      - dependency-name: "org.jetbrains.androidx.navigation3:*"
+      - dependency-name: "org.jetbrains.androidx.navigationevent:*"
+      - dependency-name: "org.jetbrains.androidx.savedstate:*"
+      - dependency-name: "org.jetbrains.androidx.window:*"
 
   # .github/workflows/*
   - package-ecosystem: "github-actions"
