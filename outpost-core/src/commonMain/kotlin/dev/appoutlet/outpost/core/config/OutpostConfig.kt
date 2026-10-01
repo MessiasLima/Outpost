@@ -48,7 +48,7 @@ class OutpostConfigThemeBuilder {
     fun build() = OutpostConfig.Theme(seedColor, style, contractLevel)
 }
 
-fun outpostConfig(setup: OutpostConfigBuilder.() -> Unit): OutpostConfig {
+fun outpostConfig(setup: OutpostConfigBuilder.() -> Unit = {}): OutpostConfig {
     val outpostConfigBuilder = OutpostConfigBuilder()
     outpostConfigBuilder.setup()
     return outpostConfigBuilder.build()
