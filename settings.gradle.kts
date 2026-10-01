@@ -1,4 +1,7 @@
+import kotlinx.kover.gradle.aggregation.settings.dsl.minBound
+
 rootProject.name = "Outpost"
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -28,11 +31,33 @@ dependencyResolutionManagement {
     }
 }
 
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
-}
-
 include(":kotlin-outpost:android")
 include(":kotlin-outpost:desktop")
 include(":kotlin-outpost:shared")
 include(":outpost-core")
+
+plugins {
+    id("org.jetbrains.kotlinx.kover.aggregation") version "0.9.9"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
+
+kover {
+    enableCoverage()
+    reports {
+        excludedClasses = listOf(
+            // Untestable framework code
+            "MainKt",
+            "ComposableSingletons*",
+            "*.ComposableSingletons*",
+            "*.AppActivity",
+            "*.generated.resources.*"
+        )
+
+        verify {
+            rule {
+                name = "Minimum coverage"
+                minBound(80)
+            }
+        }
+    }
+}

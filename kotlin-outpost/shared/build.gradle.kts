@@ -36,11 +36,22 @@ kotlin {
             implementation(projects.outpostCore)
             implementation(libs.compose.runtime)
         }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.compose.ui.test)
         }
+
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
+
         iosMain.dependencies {
             implementation(libs.compose.ui)
+        }
+
+        all {
+            languageSettings.optIn("androidx.compose.ui.test.ExperimentalTestApi")
         }
     }
 }

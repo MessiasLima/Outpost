@@ -15,41 +15,44 @@ compose.resources {
 kotlin {
     iosArm64()
     iosSimulatorArm64()
-    
+
     jvm()
-    
-    androidLibrary {
-       namespace = "dev.appoutlet.outpost"
-       compileSdk = libs.versions.android.compileSdk.get().toInt()
-       minSdk = libs.versions.android.minSdk.get().toInt()
-    
-       compilerOptions {
-           jvmTarget = JvmTarget.JVM_11
-       }
-       androidResources {
-           enable = true
-       }
-       withHostTest {
-           isIncludeAndroidResources = true
-       }
+
+    android {
+        namespace = "dev.appoutlet.outpost"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+        androidResources.enable = true
+        compilerOptions { jvmTarget = JvmTarget.JVM_11 }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
         }
+
         commonMain.dependencies {
-            implementation(libs.compose.runtime)
-            implementation(libs.compose.foundation)
-            implementation(libs.compose.material3)
-            implementation(libs.compose.ui)
-            implementation(libs.compose.components.resources)
-            implementation(libs.compose.uiToolingPreview)
+            api(libs.compose.foundation)
+            api(libs.compose.material3)
+            api(libs.compose.components.resources)
+            api(libs.compose.runtime)
+            api(libs.compose.ui)
+            api(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.compose.ui.test)
+        }
+
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
+
+        all {
+            languageSettings.optIn("androidx.compose.ui.test.ExperimentalTestApi")
         }
     }
 }
