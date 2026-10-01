@@ -35,6 +35,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.outpostCore)
             implementation(libs.compose.runtime)
+            implementation(libs.material.kolor)
         }
 
         commonTest.dependencies {

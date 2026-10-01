@@ -38,6 +38,7 @@ kotlin {
             api(libs.compose.runtime)
             api(libs.compose.ui)
             api(libs.compose.uiToolingPreview)
+            implementation(libs.material.kolor)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
         }

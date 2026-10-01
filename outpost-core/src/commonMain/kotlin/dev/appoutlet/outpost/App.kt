@@ -1,13 +1,12 @@
 package dev.appoutlet.outpost
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import dev.appoutlet.outpost.core.config.OutpostConfig
+import dev.appoutlet.outpost.core.ui.theme.OutpostTheme
 
 @Composable
-@Preview
-fun App() {
-    MaterialTheme {
+fun App(config: OutpostConfig) {
+    OutpostTheme(theme = config.theme) {
         Navigation()
     }
 }
