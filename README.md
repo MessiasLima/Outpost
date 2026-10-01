@@ -44,6 +44,20 @@ Run Detekt from the repository root:
 ./gradlew detekt
 ```
 
+### Continuous integration
+
+Pull requests targeting `main` run the checks defined in
+[`.github/workflows/pull-request.yml`](./.github/workflows/pull-request.yml):
+
+- **Detekt** — static analysis, via `./gradlew detekt`.
+- **Kover coverage verification** — runs the JVM tests and enforces the minimum
+  coverage rule, via `./gradlew :outpost-core:jvmTest :kotlin-outpost:shared:jvmTest koverVerify -Pkover`.
+
+Both checks must pass before a pull request can be merged. The workflow uses the
+Gradle wrapper, so the commands above reproduce it locally. Note that the Kover
+aggregation plugin only measures coverage for tests executed in the same build,
+which is why the `-Pkover` flag is required.
+
 ### Security
 
 If you discover a security vulnerability in Outpost or in any app built on top of Outpost, please review our [Security Policy](./SECURITY.md) for responsible disclosure instructions.
