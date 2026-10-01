@@ -37,8 +37,8 @@ jobs:
           cache-read-only: false
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
 
-      - name: Run Detekt
+      - name: Static analysis
         run: ./gradlew detekt
 
-      - name: Check code test coverage
+      - name: Unit and UI tests
         run: ./gradlew allTests -Pkover koverVerify
