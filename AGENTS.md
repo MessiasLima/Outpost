@@ -11,10 +11,12 @@
 - Shared module JVM test: `./gradlew :outpost-core:jvmTest`
 - Shared module Android host test: `./gradlew :outpost-core:testAndroidHostTest`
 - Shared module iOS simulator test: `./gradlew :outpost-core:iosSimulatorArm64Test`
+- Reinstall git hooks: `./gradlew :installGitHooks` (also auto-runs on Gradle model prep / IDE sync).
 - Use only focused test tasks needed for the files or target you changed.
 - NEVER run `:outpost-core:allTests`, `build`, or `assemble` unless the user explicitly asks for them.
 
 ## Quirks
 - `detekt` has `autoCorrect = true` in every Gradle module, so lint can rewrite files.
+- `detekt` runs automatically before every `git push` (`config/githooks/pre-push.sh`) and blocks the push on failure, so avoid running it manually unless needed.
 - To check an implementation or basic compilation, prefer the smallest relevant test task or small set of test tasks instead of broad project verification.
 - Compose resources live under `outpost-core/src/commonMain/composeResources`; the `dev.appoutlet.outpost.generated.resources` API used from Kotlin is generated.

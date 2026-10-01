@@ -6,6 +6,15 @@ plugins {
     alias(libs.plugins.compose) apply false
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.gitHooks)
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
+}
+
+gitHooks {
+    gitHooksDirectory = file("$rootDir/config/githooks")
+}
+
+tasks.named("prepareKotlinBuildScriptModel") {
+    dependsOn(":installGitHooks")
 }
