@@ -1,12 +1,13 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.multiplatform.library)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.detekt)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 compose.resources {
@@ -45,7 +46,9 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.koin.compose.navigation3)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.navigation3.ui)
         }
 
         commonTest.dependencies {
@@ -59,6 +62,7 @@ kotlin {
 
         all {
             languageSettings.optIn("androidx.compose.ui.test.ExperimentalTestApi")
+            languageSettings.optIn("org.koin.core.annotation.KoinExperimentalAPI")
         }
     }
 }

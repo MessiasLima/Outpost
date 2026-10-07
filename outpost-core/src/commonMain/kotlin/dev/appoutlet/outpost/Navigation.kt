@@ -1,29 +1,20 @@
 package dev.appoutlet.outpost
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.material3.Button
-import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
-import dev.appoutlet.outpost.core.SampleInterface
-import org.koin.compose.koinInject
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.ui.NavDisplay
+import dev.appoutlet.outpost.feature.main.MainNavKey
+import org.koin.compose.navigation3.koinEntryProvider
 
 @Composable
 internal fun Navigation() {
-    val sampleInterface = koinInject<SampleInterface>()
+    val backStack = remember { mutableStateListOf<NavKey>(MainNavKey) }
 
-    Column(modifier = Modifier.safeDrawingPadding()) {
-        Text(modifier = Modifier.testTag("Navigation"), text = "Outpost")
-
-        Button(onClick = {}) {
-            Text("Button ${sampleInterface.variable}")
-        }
-
-        FilledTonalButton(onClick = {}) {
-            Text("FilledTonalButton")
-        }
-    }
+    NavDisplay(
+        backStack = backStack,
+        onBack = { backStack.removeLastOrNull() },
+        entryProvider = koinEntryProvider()
+    )
 }
