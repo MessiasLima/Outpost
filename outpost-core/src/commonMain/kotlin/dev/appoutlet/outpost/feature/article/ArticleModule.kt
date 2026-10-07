@@ -6,10 +6,10 @@ import org.koin.dsl.module
 import org.koin.dsl.navigation3.navigation
 
 val articleModule = module {
-    navigation<ArticleNavKey> {
-        ArticleScreen()
+    navigation<ArticleNavKey> { article ->
+        ArticleScreen(id = article.id)
     }
 }
 
 @Serializable
-object ArticleNavKey : NavKey
+data class ArticleNavKey(val id: String) : NavKey

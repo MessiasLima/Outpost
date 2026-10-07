@@ -1,20 +1,23 @@
 package dev.appoutlet.outpost
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.ui.NavDisplay
-import dev.appoutlet.outpost.feature.main.MainNavKey
+import dev.appoutlet.outpost.core.navigation.LocalNavigator
+import dev.appoutlet.outpost.core.navigation.Navigator
+import dev.appoutlet.outpost.feature.home.HomeNavKey
 import org.koin.compose.navigation3.koinEntryProvider
 
 @Composable
 internal fun Navigation() {
-    val backStack = remember { mutableStateListOf<NavKey>(MainNavKey) }
+    val navigator = remember { Navigator(HomeNavKey) }
 
-    NavDisplay(
-        backStack = backStack,
-        onBack = { backStack.removeLastOrNull() },
-        entryProvider = koinEntryProvider()
-    )
+    CompositionLocalProvider(LocalNavigator provides navigator) {
+        NavDisplay(
+            backStack = navigator.backStack,
+            onBack = { navigator.back() },
+            entryProvider = koinEntryProvider()
+        )
+    }
 }
