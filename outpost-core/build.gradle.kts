@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.detekt)
     alias(libs.plugins.koin.compiler)
     alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.serialization)
 }
 
 compose.resources {
@@ -41,13 +41,15 @@ kotlin {
             api(libs.compose.ui)
             api(libs.compose.uiToolingPreview)
             implementation(libs.material.kolor)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.lifecycle.runtime.compose)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.compose.navigation3)
-            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.lifecycle.viewmodel.navigation3)
+            implementation(libs.material3.adaptive.navigation3)
+            implementation(libs.serialization.json)
             implementation(libs.navigation3.ui)
         }
 
