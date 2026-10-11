@@ -65,6 +65,7 @@ kotlin {
         all {
             languageSettings.optIn("androidx.compose.ui.test.ExperimentalTestApi")
             languageSettings.optIn("org.koin.core.annotation.KoinExperimentalAPI")
+            languageSettings.optIn("androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi")
         }
     }
 }
