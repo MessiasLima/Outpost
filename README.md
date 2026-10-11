@@ -1,6 +1,6 @@
 This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
 
-* [/kotlin-outpost/ios](./kotlin-outpost/ios/ios) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
+* [/kotlin-outpost/ios](./kotlin-outpost/ios/Kotlin Outpost) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
   you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
 
 * [/outpost-core](./outpost-core/src) contains the root Kotlin Multiplatform module for shared code and UI.
