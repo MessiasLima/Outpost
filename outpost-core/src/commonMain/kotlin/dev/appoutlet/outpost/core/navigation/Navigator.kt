@@ -8,8 +8,8 @@ class Navigator(start: NavKey) {
         field = mutableStateListOf(start)
 
     fun navigate(destination: NavKey) {
-        if (destination is MediaPage) {
-            while (backStack.size > 1 && backStack.last() is MediaPage) {
+        if (destination is ScreenType.Media) {
+            while (backStack.size > 1 && backStack.last() is ScreenType.Media) {
                 back()
             }
         }

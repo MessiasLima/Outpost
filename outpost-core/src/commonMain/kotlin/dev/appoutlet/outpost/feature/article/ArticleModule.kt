@@ -2,7 +2,7 @@ package dev.appoutlet.outpost.feature.article
 
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.navigation3.runtime.NavKey
-import dev.appoutlet.outpost.core.navigation.MediaPage
+import dev.appoutlet.outpost.core.navigation.ScreenType
 import kotlinx.serialization.Serializable
 import org.koin.dsl.module
 import org.koin.dsl.navigation3.navigation
@@ -15,14 +15,14 @@ val articleModule = module {
     }
 
     navigation<FeaturedArticleNavKey>(
-        metadata = ListDetailSceneStrategy.detailPane()+ ListDetailSceneStrategy.preferredPaneSize(.33f)
+        metadata = ListDetailSceneStrategy.detailPane() + ListDetailSceneStrategy.preferredPaneSize(.33f)
     ) { article ->
         ArticleScreen(id = article.id)
     }
 }
 
 @Serializable
-data class ArticleNavKey(val id: String) : NavKey, MediaPage
+data class ArticleNavKey(val id: String) : NavKey, ScreenType.Media
 
 @Serializable
-data class FeaturedArticleNavKey(val id: String) : NavKey, MediaPage
+data class FeaturedArticleNavKey(val id: String) : NavKey, ScreenType.Media
