@@ -5,14 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.NavKey
 import dev.appoutlet.outpost.core.navigation.ScreenType
 import kotlinx.serialization.Serializable
-import org.koin.compose.viewmodel.koinViewModel
-import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 import org.koin.dsl.navigation3.navigation
 
 val articleModule = module {
-    viewModelOf(::ArticleViewModel)
-
     navigation<ArticleNavKey>(
         metadata = ListDetailSceneStrategy.extraPane() + ListDetailSceneStrategy.preferredPaneSize(
             .66f
@@ -33,7 +29,6 @@ val articleModule = module {
 @Suppress("UnusedPrivateProperty")
 @Composable
 private fun ArticleScreenCommon(id: String) {
-    val viewModel = koinViewModel<ArticleViewModel>()
     ArticleScreen(id)
 }
 
