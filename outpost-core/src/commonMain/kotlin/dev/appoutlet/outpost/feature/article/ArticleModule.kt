@@ -14,7 +14,7 @@ val articleModule = module {
     }
 
     navigation<FeaturedArticleNavKey>(
-        metadata = ListDetailSceneStrategy.detailPane()
+        metadata = ListDetailSceneStrategy.detailPane()+ ListDetailSceneStrategy.preferredPaneSize(.33f)
     ) { article ->
         ArticleScreen(id = article.id)
     }

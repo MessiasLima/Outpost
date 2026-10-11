@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import dev.appoutlet.outpost.core.navigation.LocalNavigator
+import dev.appoutlet.outpost.feature.article.FeaturedArticleNavKey
 import dev.appoutlet.outpost.feature.articlelist.ArticleListNavKey
 
 @Composable
@@ -25,6 +26,11 @@ fun HomeScreen() {
             navigator.navigate(ArticleListNavKey)
         }) {
             Text("Go to articles")
+        }
+        Button(onClick = {
+            navigator.navigate(FeaturedArticleNavKey("featured"))
+        }) {
+            Text("Go to featured article")
         }
     }
 }
