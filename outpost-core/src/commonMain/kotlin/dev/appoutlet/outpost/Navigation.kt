@@ -6,6 +6,8 @@ import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneSt
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavKey
@@ -38,6 +40,7 @@ internal fun Navigation() {
 
     CompositionLocalProvider(LocalNavigator provides navigator) {
         NavDisplay(
+            modifier = Modifier.testTag("Navigation"),
             backStack = navigator.backStack,
             onBack = { navigator.back() },
             entryDecorators = listOf(
