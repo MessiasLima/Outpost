@@ -7,7 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import dev.appoutlet.outpost.core.navigation.LocalNavigator
 import dev.appoutlet.outpost.core.navigation.Navigator
@@ -38,6 +40,10 @@ internal fun Navigation() {
         NavDisplay(
             backStack = navigator.backStack,
             onBack = { navigator.back() },
+            entryDecorators = listOf(
+                rememberSaveableStateHolderNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator()
+            ),
             sceneStrategies = listOf(listDetailSceneStrategy),
             entryProvider = koinEntryProvider()
         )
