@@ -7,10 +7,21 @@ import org.koin.dsl.module
 import org.koin.dsl.navigation3.navigation
 
 val articleModule = module {
-    navigation<ArticleNavKey> { article ->
+    navigation<ArticleNavKey>(
+        metadata = ListDetailSceneStrategy.extraPane() + ListDetailSceneStrategy.preferredPaneSize(.66f)
+    ) { article ->
+        ArticleScreen(id = article.id)
+    }
+
+    navigation<FeaturedArticleNavKey>(
+        metadata = ListDetailSceneStrategy.detailPane()
+    ) { article ->
         ArticleScreen(id = article.id)
     }
 }
 
 @Serializable
 data class ArticleNavKey(val id: String) : NavKey
+
+@Serializable
+data class FeaturedArticleNavKey(val id: String) : NavKey

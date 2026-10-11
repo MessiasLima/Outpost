@@ -7,7 +7,9 @@ import org.koin.dsl.module
 import org.koin.dsl.navigation3.navigation
 
 val homeModule = module {
-    navigation<HomeNavKey> {
+    navigation<HomeNavKey>(
+        metadata = ListDetailSceneStrategy.listPane()
+    ) {
         HomeScreen()
     }
 }
