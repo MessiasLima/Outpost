@@ -1,12 +1,13 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.multiplatform.library)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.detekt)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.serialization)
 }
 
 compose.resources {
@@ -40,17 +41,22 @@ kotlin {
             api(libs.compose.ui)
             api(libs.compose.uiToolingPreview)
             implementation(libs.material.kolor)
-            implementation(libs.androidx.lifecycle.viewmodelCompose)
-            implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.lifecycle.viewmodel.compose)
+            implementation(libs.lifecycle.runtime.compose)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
-            implementation(libs.koin.compose.viewmodel.navigation)
+            implementation(libs.koin.compose.navigation3)
+            implementation(libs.lifecycle.viewmodel.navigation3)
+            implementation(libs.material3.adaptive.navigation3)
+            implementation(libs.serialization.json)
+            implementation(libs.navigation3.ui)
         }
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.compose.ui.test)
+            implementation(libs.kotest.assertions)
         }
 
         jvmMain.dependencies {
@@ -59,6 +65,8 @@ kotlin {
 
         all {
             languageSettings.optIn("androidx.compose.ui.test.ExperimentalTestApi")
+            languageSettings.optIn("org.koin.core.annotation.KoinExperimentalAPI")
+            languageSettings.optIn("androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi")
         }
     }
 }
