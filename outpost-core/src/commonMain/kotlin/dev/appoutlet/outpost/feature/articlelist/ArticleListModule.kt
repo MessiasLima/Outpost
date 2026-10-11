@@ -1,6 +1,7 @@
 package dev.appoutlet.outpost.feature.articlelist
 
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
+import androidx.compose.ui.unit.dp
 import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 import org.koin.dsl.module

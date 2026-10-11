@@ -8,7 +8,8 @@ import org.koin.dsl.navigation3.navigation
 
 val homeModule = module {
     navigation<HomeNavKey>(
-        metadata = ListDetailSceneStrategy.listPane()
+        metadata = ListDetailSceneStrategy.listPane() +
+                ListDetailSceneStrategy.preferredPaneSize(.33f)
     ) {
         HomeScreen()
     }

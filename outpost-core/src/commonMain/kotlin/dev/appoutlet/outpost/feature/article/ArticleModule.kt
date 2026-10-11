@@ -2,6 +2,7 @@ package dev.appoutlet.outpost.feature.article
 
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.navigation3.runtime.NavKey
+import dev.appoutlet.outpost.core.navigation.MediaPage
 import kotlinx.serialization.Serializable
 import org.koin.dsl.module
 import org.koin.dsl.navigation3.navigation
@@ -21,7 +22,7 @@ val articleModule = module {
 }
 
 @Serializable
-data class ArticleNavKey(val id: String) : NavKey
+data class ArticleNavKey(val id: String) : NavKey, MediaPage
 
 @Serializable
-data class FeaturedArticleNavKey(val id: String) : NavKey
+data class FeaturedArticleNavKey(val id: String) : NavKey, MediaPage

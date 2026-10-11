@@ -21,18 +21,18 @@ internal fun Navigation() {
     val windowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 
     val directive = remember(windowAdaptiveInfo, navigator.backStack.size) {
-
-        val maxHorizontalPartitions = if (navigator.backStack.size == 1) 1 else 3
-
-        calculatePaneScaffoldDirective(windowAdaptiveInfo).copy(
-            maxHorizontalPartitions = maxHorizontalPartitions,
+        val default = calculatePaneScaffoldDirective(windowAdaptiveInfo).copy(
             horizontalPartitionSpacerSize = 0.dp,
         )
+
+        if (navigator.backStack.size == 1) {
+            default.copy(maxHorizontalPartitions = 1)
+        } else {
+            default
+        }
     }
 
-    val listDetailSceneStrategy = rememberListDetailSceneStrategy<NavKey>(
-        directive = directive
-    )
+    val listDetailSceneStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
 
     CompositionLocalProvider(LocalNavigator provides navigator) {
         NavDisplay(
