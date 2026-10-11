@@ -7,9 +7,7 @@ import org.koin.dsl.module
 import org.koin.dsl.navigation3.navigation
 
 val articleModule = module {
-    navigation<ArticleNavKey>(
-        metadata = ListDetailSceneStrategy.extraPane() + ListDetailSceneStrategy.preferredPaneSize(.66f)
-    ) { article ->
+    navigation<ArticleNavKey> { article ->
         ArticleScreen(id = article.id)
     }
 }
