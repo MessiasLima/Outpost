@@ -1,29 +1,54 @@
 package dev.appoutlet.outpost
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.material3.Button
-import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
+import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
+import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import dev.appoutlet.outpost.core.SampleInterface
-import org.koin.compose.koinInject
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.ui.NavDisplay
+import dev.appoutlet.outpost.core.navigation.LocalNavigator
+import dev.appoutlet.outpost.core.navigation.Navigator
+import dev.appoutlet.outpost.feature.home.HomeNavKey
+import org.koin.compose.navigation3.koinEntryProvider
 
 @Composable
 internal fun Navigation() {
-    val sampleInterface = koinInject<SampleInterface>()
+    val navigator = remember { Navigator(HomeNavKey) }
 
-    Column(modifier = Modifier.safeDrawingPadding()) {
-        Text(modifier = Modifier.testTag("Navigation"), text = "Outpost")
+    val windowAdaptiveInfo = currentWindowAdaptiveInfoV2()
 
-        Button(onClick = {}) {
-            Text("Button ${sampleInterface.variable}")
+    val directive = remember(windowAdaptiveInfo, navigator.backStack.size) {
+        val default = calculatePaneScaffoldDirective(windowAdaptiveInfo).copy(
+            horizontalPartitionSpacerSize = 0.dp,
+        )
+
+        if (navigator.backStack.size == 1) {
+            default.copy(maxHorizontalPartitions = 1)
+        } else {
+            default
         }
+    }
 
-        FilledTonalButton(onClick = {}) {
-            Text("FilledTonalButton")
-        }
+    val listDetailSceneStrategy = rememberListDetailSceneStrategy<NavKey>(directive = directive)
+
+    CompositionLocalProvider(LocalNavigator provides navigator) {
+        NavDisplay(
+            modifier = Modifier.testTag("Navigation"),
+            backStack = navigator.backStack,
+            onBack = { navigator.back() },
+            entryDecorators = listOf(
+                rememberSaveableStateHolderNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator()
+            ),
+            sceneStrategies = listOf(listDetailSceneStrategy),
+            entryProvider = koinEntryProvider()
+        )
     }
 }

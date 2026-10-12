@@ -15,7 +15,7 @@ kotlin {
 
 dependencies {
     implementation(projects.kotlinOutpost.shared)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.activity.compose)
     implementation(libs.compose.uiToolingPreview)
 
     debugImplementation(libs.compose.uiTooling)
