@@ -1,6 +1,6 @@
 TEAM_ID=
 
-PRODUCT_NAME=Outpost
+PRODUCT_NAME=Kotlin Outpost
 PRODUCT_BUNDLE_IDENTIFIER=dev.appoutlet.outpost.Outpost$(TEAM_ID)
 
 CURRENT_PROJECT_VERSION=1
