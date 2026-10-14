@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <defs>
+    <!-- Outpost Infinity Blue-to-Purple Gradient -->
+    <linearGradient id="infinity-grad" x1="68" y1="260" x2="444" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0095d5" />
+      <stop offset="30%" stop-color="#238ad9" />
+      <stop offset="62%" stop-color="#557bde" />
+      <stop offset="86%" stop-color="#7472e2" />
+      <stop offset="100%" stop-color="#806ee3" />
+    </linearGradient>
+
+    <!-- Document Gradients -->
+    <linearGradient id="doc-body" x1="150" y1="68" x2="396" y2="396" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#EEF2FA" />
+    </linearGradient>
+
+    <linearGradient id="doc-flap" x1="332" y1="68" x2="404" y2="144" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#DCE4F7" />
+      <stop offset="100%" stop-color="#B9C8E8" />
+    </linearGradient>
+
+    <!-- Clip path for the document interior so the infinity shadow only falls on the paper -->
+    <clipPath id="doc-clip">
+      <path
+        transform="rotate(8 264 220)"
+        d="M152 72 H332 L404 144 V394 H128 V96 C128 82.745 138.745 72 152 72 Z"
+      />
+    </clipPath>
+
+    <!-- Clip path for the infinity ribbon body -->
+    <clipPath id="infinity-body-clip">
+      <path
+        fill-rule="evenodd"
+        d="M 232 278 L 256 302 L 280 278 A 90.51 90.51 0 1 1 280 406 L 256 382 L 232 406 A 90.51 90.51 0 1 1 232 278 Z
+           M 192 318 A 33.94 33.94 0 1 0 192 366 L 216 342 Z
+           M 320 318 L 296 342 L 320 366 A 33.94 33.94 0 1 0 320 318 Z"
+      />
+    </clipPath>
+  </defs>
+
+  <!-- ==================== DOCUMENT (CENTERED SLIGHTLY BEHIND) ==================== -->
+  <g transform="rotate(8 264 220)">
+    <!-- Document Sheet Fill -->
+    <path
+      d="M152 72 H332 L404 144 V394 H128 V96 C128 82.745 138.745 72 152 72 Z"
+      fill="url(#doc-body)"
+    />
+
+    <!-- Document Content Lines -->
+    <line
+      x1="172" y1="118" x2="276" y2="118"
+      stroke="#557BDE"
+      stroke-width="18"
+      stroke-linecap="round"
+    />
+    <line
+      x1="172" y1="168" x2="356" y2="168"
+      stroke="#1A162B"
+      stroke-width="16"
+      stroke-linecap="round"
+    />
+    <line
+      x1="172" y1="216" x2="316" y2="216"
+      stroke="#1A162B"
+      stroke-width="16"
+      stroke-linecap="round"
+    />
+
+    <!-- Document Folded Top-Right Corner -->
+    <path
+      d="M332 72 V124 C332 135.046 340.954 144 352 144 H404 L332 72 Z"
+      fill="url(#doc-flap)"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+
+    <!-- Document Outer Thick Outline (tucked behind the infinity symbol) -->
+    <path
+      d="M128 300 V96 C128 82.745 138.745 72 152 72 H332 L404 144 V280"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- Subtle shadow cast by the Infinity symbol strictly onto the document paper -->
+  <g clip-path="url(#doc-clip)" opacity="0.14">
+    <path
+      transform="translate(12, 14)"
+      fill-rule="evenodd"
+      d="M 232 278 L 256 302 L 280 278 A 90.51 90.51 0 1 1 280 406 L 256 382 L 232 406 A 90.51 90.51 0 1 1 232 278 Z
+         M 192 318 A 33.94 33.94 0 1 0 192 366 L 216 342 Z
+         M 320 318 L 296 342 L 320 366 A 33.94 33.94 0 1 0 320 318 Z"
+      fill="#1A162B"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- ==================== INFINITY SYMBOL (CENTERED FOREGROUND) ==================== -->
+  <g>
+    <!-- Continuous Blue-to-Purple Infinity Ribbon Fill -->
+    <path
+      fill-rule="evenodd"
+      d="M 232 278 L 256 302 L 280 278 A 90.51 90.51 0 1 1 280 406 L 256 382 L 232 406 A 90.51 90.51 0 1 1 232 278 Z
+         M 192 318 A 33.94 33.94 0 1 0 192 366 L 216 342 Z
+         M 320 318 L 296 342 L 320 366 A 33.94 33.94 0 1 0 320 318 Z"
+      fill="url(#infinity-grad)"
+    />
+
+    <!-- Subtle shadow cast by the over-passing strand onto the under-passing strand -->
+    <g clip-path="url(#infinity-body-clip)" opacity="0.18">
+      <!-- Top-left under-strand shadow band -->
+      <polygon points="194,320 234,280 256,302 216,342" fill="#1A162B" />
+      <!-- Bottom-right under-strand shadow band -->
+      <polygon points="296,342 318,364 278,404 256,382" fill="#1A162B" />
+    </g>
+
+    <!-- Outer Infinity Contour + Inner Loop Cutouts (Thick Outlines) -->
+    <path
+      d="M 232 278 L 256 302 L 280 278 A 90.51 90.51 0 1 1 280 406 L 256 382 L 232 406 A 90.51 90.51 0 1 1 232 278 Z"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M 192 318 A 33.94 33.94 0 1 0 192 366 L 216 342 Z"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M 320 318 L 296 342 L 320 366 A 33.94 33.94 0 1 0 320 318 Z"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+
+    <!-- Over-crossing Strand Dividing Lines at the Center Intersection -->
+    <line
+      x1="216" y1="342" x2="256" y2="302"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linecap="round"
+    />
+    <line
+      x1="256" y1="382" x2="296" y2="342"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linecap="round"
+    />
+  </g>
+</svg>
