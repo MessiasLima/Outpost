@@ -22,7 +22,7 @@ private val KotlinOutpostConfig = outpostConfig {
         }
 
         videos {
-            youtubeChannel("UC5DwS2-lzqd3Vcv9Ai85kgQ" )
+            youtubeChannel("UC5DwS2-lzqd3Vcv9Ai85kgQ")
         }
 
         podcasts {
