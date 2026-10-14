@@ -1,3 +1,11 @@
+<div align="center">
+  <img src="./docs/outpost-icon.svg" alt="Outpost icon" width="160" height="160" />
+  <h1>Outpost</h1>
+  <p>A white-label Kotlin Multiplatform content hub for Android, iOS and Desktop.</p>
+</div>
+
+---
+
 This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
 
 * [Kotlin Outpost iOS app sources](./kotlin-outpost/ios/Kotlin%20Outpost) contain the iOS application entry point. Even if you’re sharing your UI with Compose Multiplatform,
