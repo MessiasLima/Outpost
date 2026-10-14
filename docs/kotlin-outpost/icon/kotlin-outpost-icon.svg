@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <defs>
+    <!-- Original Kotlin Logo Gradients -->
+    <linearGradient id="kotlin-a" gradientTransform="matrix(1 0 0 -1 0 61)" x1="15.9594" y1="-13.0143" x2="44.3068" y2="15.3332" gradientUnits="userSpaceOnUse">
+      <stop offset=".0968" stop-color="#0095d5" />
+      <stop offset=".3007" stop-color="#238ad9" />
+      <stop offset=".6211" stop-color="#557bde" />
+      <stop offset=".8643" stop-color="#7472e2" />
+      <stop offset="1" stop-color="#806ee3" />
+    </linearGradient>
+
+    <linearGradient id="kotlin-b" gradientTransform="matrix(1 0 0 -1 0 61)" x1="4.2092" y1="48.9409" x2="20.6734" y2="65.405" gradientUnits="userSpaceOnUse">
+      <stop offset=".1183" stop-color="#0095d5" />
+      <stop offset=".4178" stop-color="#3c83dc" />
+      <stop offset=".6962" stop-color="#6d74e1" />
+      <stop offset=".8333" stop-color="#806ee3" />
+    </linearGradient>
+
+    <linearGradient id="kotlin-c" gradientTransform="matrix(1 0 0 -1 0 61)" x1="-10.1017" y1="5.8362" x2="45.7315" y2="61.6694" gradientUnits="userSpaceOnUse">
+      <stop offset=".1075" stop-color="#c757bc" />
+      <stop offset=".2138" stop-color="#d0609a" />
+      <stop offset=".4254" stop-color="#e1725c" />
+      <stop offset=".6048" stop-color="#ee7e2f" />
+      <stop offset=".743" stop-color="#f58613" />
+      <stop offset=".8232" stop-color="#f88909" />
+    </linearGradient>
+
+    <!-- Document Gradients -->
+    <linearGradient id="doc-body" x1="190" y1="52" x2="420" y2="376" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#EEF2FA" />
+    </linearGradient>
+
+    <linearGradient id="doc-flap" x1="356" y1="52" x2="428" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#DCE4F7" />
+      <stop offset="100%" stop-color="#B9C8E8" />
+    </linearGradient>
+
+    <!-- Clip path for the document interior so the K's shadow only falls on the paper -->
+    <clipPath id="doc-clip">
+      <path
+        transform="rotate(12 306 214)"
+        d="M196 54 H356 L428 126 V352 C428 365.255 417.255 376 404 376 H196 C182.745 376 172 365.255 172 352 V78 C172 64.745 182.745 54 196 54 Z"
+      />
+    </clipPath>
+  </defs>
+
+  <!-- ==================== DOCUMENT (SLIGHTLY BEHIND) ==================== -->
+  <g transform="rotate(12 306 214)">
+    <!-- Document Sheet Fill -->
+    <path
+      d="M196 54 H356 L428 126 V352 C428 365.255 417.255 376 404 376 H196 C182.745 376 172 365.255 172 352 V78 C172 64.745 182.745 54 196 54 Z"
+      fill="url(#doc-body)"
+    />
+
+    <!-- Document Content Lines -->
+    <line
+      x1="216" y1="116" x2="314" y2="116"
+      stroke="#557BDE"
+      stroke-width="18"
+      stroke-linecap="round"
+    />
+    <line
+      x1="236" y1="176" x2="382" y2="176"
+      stroke="#1A162B"
+      stroke-width="16"
+      stroke-linecap="round"
+    />
+    <line
+      x1="216" y1="228" x2="382" y2="228"
+      stroke="#1A162B"
+      stroke-width="16"
+      stroke-linecap="round"
+    />
+    <line
+      x1="216" y1="280" x2="382" y2="280"
+      stroke="#1A162B"
+      stroke-width="16"
+      stroke-linecap="round"
+    />
+    <line
+      x1="216" y1="330" x2="334" y2="330"
+      stroke="#1A162B"
+      stroke-width="16"
+      stroke-linecap="round"
+    />
+
+    <!-- Document Folded Top-Right Corner -->
+    <path
+      d="M356 54 V106 C356 117.046 364.954 126 376 126 H428 L356 54 Z"
+      fill="url(#doc-flap)"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+
+    <!-- Document Outer Thick Outline -->
+    <path
+      d="M196 54 H356 L428 126 V352 C428 365.255 417.255 376 404 376 H196 C182.745 376 172 365.255 172 352 V78 C172 64.745 182.745 54 196 54 Z"
+      stroke="#1A162B"
+      stroke-width="18"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- Subtle shadow cast by the K strictly onto the document paper -->
+  <g clip-path="url(#doc-clip)" opacity="0.14">
+    <path
+      transform="translate(94, 178) scale(4.6)"
+      d="M0 0H60L30.1 29.9L60 60H0Z"
+      fill="#1A162B"
+      stroke="#1A162B"
+      stroke-width="3.913"
+      stroke-linejoin="round"
+    />
+  </g>
+
+  <!-- ==================== KOTLIN "K" LOGO (FOREGROUND) ==================== -->
+  <g transform="translate(80, 164) scale(4.6)">
+    <!-- Original Kotlin Facet Fills -->
+    <path fill="url(#kotlin-a)" d="M60 60H0l30.1-30.1z" />
+    <path fill="url(#kotlin-b)" d="M0 32.5V0h30.1z" />
+    <path fill="url(#kotlin-c)" d="M0 60l30.1-30.1L60 0H30.1L0 31.7z" />
+
+    <!-- Thick Outlines (3.913 * 4.6 = 18px effective stroke width) -->
+    <path
+      d="M30.1 0L0 31.7"
+      stroke="#1A162B"
+      stroke-width="3.913"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M0 60L30.1 29.9"
+      stroke="#1A162B"
+      stroke-width="3.913"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M0 0H60L30.1 29.9L60 60H0Z"
+      stroke="#1A162B"
+      stroke-width="3.913"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>
