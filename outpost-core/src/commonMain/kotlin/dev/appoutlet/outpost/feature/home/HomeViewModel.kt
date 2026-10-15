@@ -28,5 +28,3 @@ data class HomeViewData(val sections: List<Section>) {
 }
 
 sealed interface HomeSideEffect
-
-

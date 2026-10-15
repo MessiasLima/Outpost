@@ -20,7 +20,7 @@ fun HomeScreen(state: HomeState) {
 private fun HomeScreenSuccess(viewData: HomeViewData) {
     LazyColumn {
         items(viewData.sections) { section ->
-            when(section) {
+            when (section) {
                 HomeViewData.Section.Articles -> ArticlesSection()
                 HomeViewData.Section.Podcasts -> PodcastsSection()
                 HomeViewData.Section.Videos -> VideosSection()
@@ -34,12 +34,10 @@ private fun ArticlesSection() {
     Text("Articles")
 }
 
-
 @Composable
 private fun PodcastsSection() {
     Text("Podcasts")
 }
-
 
 @Composable
 private fun VideosSection() {

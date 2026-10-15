@@ -6,6 +6,7 @@ import com.materialkolor.PaletteStyle
 
 data class OutpostConfig(
     val theme: Theme,
+    val appMetadata: AppMetadata,
     val content: List<Content> = emptyList(),
 ) {
     data class Theme(

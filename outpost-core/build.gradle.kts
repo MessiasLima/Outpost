@@ -1,7 +1,9 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.multiplatform.library)
+    alias(libs.plugins.buildKonfig)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.detekt)
@@ -29,18 +31,16 @@ kotlin {
     }
 
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
-        }
-
         commonMain.dependencies {
             api(libs.compose.foundation)
             api(libs.compose.material3)
-            api(libs.compose.components.resources)
+            implementation(libs.compose.components.resources)
             api(libs.compose.runtime)
             api(libs.compose.ui)
             api(libs.compose.uiToolingPreview)
-            implementation(libs.material.kolor)
+            implementation(libs.kermit)
+            implementation(libs.kermit.koin)
+            api(libs.material.kolor)
             implementation(libs.orbit.compose)
             implementation(libs.orbit.core)
             implementation(libs.orbit.viewModel)
@@ -63,6 +63,10 @@ kotlin {
             implementation(libs.orbit.test)
         }
 
+        androidMain.dependencies {
+            implementation(libs.compose.uiToolingPreview)
+        }
+
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
         }
@@ -78,6 +82,19 @@ kotlin {
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
     detektPlugins(libs.detekt.formatting)
+}
+
+buildkonfig {
+    packageName = "dev.appoutlet.outpost"
+    exposeObjectWithName.set("BuildKonfig")
+
+    defaultConfigs {
+        buildConfigField(FieldSpec.Type.BOOLEAN, "isDebug", "true")
+    }
+
+    defaultConfigs("release") {
+        buildConfigField(FieldSpec.Type.BOOLEAN, "isDebug", "false")
+    }
 }
 
 detekt {

@@ -6,7 +6,6 @@ data class Articles(
 
 sealed interface ArticleSource
 
-
 fun OutpostConfigContentBuilder.articles(setup: ArticlesContentBuilder.() -> Unit = {}) {
     add(ArticlesContentBuilder().apply(setup).build())
 }
