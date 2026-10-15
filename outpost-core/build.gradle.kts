@@ -41,6 +41,9 @@ kotlin {
             api(libs.compose.ui)
             api(libs.compose.uiToolingPreview)
             implementation(libs.material.kolor)
+            implementation(libs.orbit.compose)
+            implementation(libs.orbit.core)
+            implementation(libs.orbit.viewModel)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.lifecycle.runtime.compose)
             implementation(libs.koin.core)
@@ -57,6 +60,7 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.compose.ui.test)
             implementation(libs.kotest.assertions)
+            implementation(libs.orbit.test)
         }
 
         jvmMain.dependencies {
