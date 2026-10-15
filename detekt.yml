@@ -28,6 +28,10 @@ naming:
 
 style:
   active: true
+  ForbiddenImport:
+    active: true
+    imports:
+      - 'co.touchlab.kermit.Logger'
   MagicNumber:
     active: true
     ignorePropertyDeclaration: true
