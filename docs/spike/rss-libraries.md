@@ -34,7 +34,7 @@ Approaches rejected in this spike:
   categories, GUID; per channel: title, description, link, image.
 - Must not crash the app on a broken feed or on a non-feed response (HTML error pages are common).
 - Feed configuration already exists: `Articles` / `RssFeed(url)` in
-  `outpost-core/src/commonMain/kotlin/dev/appoutlet/outpost/core/config/`.
+  `../../outpost-core/src/commonMain/kotlin/dev/appoutlet/outpost/core/config`.
 - `libs.versions.toml` currently has **no HTTP client at all** — no Ktor, no OkHttp — so a
   dependency that brings its own transport is a smaller change than one that requires choosing and
   wiring a client first.
@@ -53,7 +53,7 @@ real feeds, not fixtures:
 | `podcast.xml` | `https://changelog.com/podcast/feed` | 6,264,762 B | Podcast RSS 2.0, `itunes:`/`content:`/`atom:` namespaces, 1,015 items, `enclosure` |
 | `malformed.xml` | hand-written | 598 B | Unescaped `&`, undefined entity `&eacute;`, junk `pubDate` |
 
-Commands (focused tasks only, as `AGENTS.md` requires):
+Commands (focused tasks only, as `../../AGENTS.md` requires):
 
 ```bash
 ./gradlew :rssparser-probe:compileCommonMainKotlinMetadata :rssparser-probe:compileKotlinJvm \
