@@ -98,6 +98,10 @@ include(":rust-outpost:shared")
 - Destinations and file contents are rendered with the placeholders `{{NAME}}`, `{{DISPLAY}}`,
   `{{PKG}}`, `{{PKG_PATH}}`, `{{SYMBOL}}`, `{{CAMEL}}`, `{{FRAMEWORK}}`, `{{RES_PKG}}` and
   `{{BUNDLE_ID}}`. A rendered file that still contains `{{` is a hard error.
+- App versions come from the version catalog, never from the templates: the generated
+  `android/build.gradle.kts` reads `libs.versions.outpost.code` / `libs.versions.outpost.name`, and the
+  generated `desktop/build.gradle.kts` reads `libs.versions.outpost.name` (package version) and
+  `libs.versions.outpost.uuid` (Windows `upgradeUuid`), so every variant tracks the reference app.
 - Sources prefixed with `repo/` are copied from the repository and additionally rewritten with the
   reference tokens: `KotlinOutpostShared` -> framework, `Kotlin Outpost` -> display name,
   `kotlin-outpost` -> variant name, `dev.appoutlet.outpost.Kotlin` -> bundle id.

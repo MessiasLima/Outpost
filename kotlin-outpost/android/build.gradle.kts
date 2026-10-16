@@ -31,8 +31,8 @@ android {
         applicationId = "dev.appoutlet.outpost.kotlin"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = libs.versions.outpost.code.get().toInt()
+        versionName = libs.versions.outpost.name.get()
     }
 
     packaging {

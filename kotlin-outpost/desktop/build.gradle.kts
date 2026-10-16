@@ -24,7 +24,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "dev.appoutlet.outpost.kotlin.desktop"
-            packageVersion = "1.0.0"
+            packageVersion = libs.versions.outpost.name.get()
 
             macOS {
                 iconFile.set(project.file("icon/icon.icns"))
@@ -32,6 +32,7 @@ compose.desktop {
 
             windows {
                 iconFile.set(project.file("icon/icon.ico"))
+                upgradeUuid = libs.versions.outpost.uuid.get()
             }
 
             linux {

@@ -22,7 +22,11 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "dev.appoutlet.outpost.{{PKG}}.desktop"
-            packageVersion = "1.0.0"
+            packageVersion = libs.versions.outpost.name.get()
+
+            windows {
+                upgradeUuid = libs.versions.outpost.uuid.get()
+            }
 
             // Brand assets: add the macOS/windows/linux iconFile entries once the
             // variant has its own icons.
