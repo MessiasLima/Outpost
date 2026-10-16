@@ -1,17 +1,17 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.multiplatform.library)
+    alias(libs.plugins.buildKonfig)
     alias(libs.plugins.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.detekt)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.allopen)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.mokkery)
     alias(libs.plugins.serialization)
-}
-
-compose.resources {
-    packageOfResClass = "dev.appoutlet.outpost.generated.resources"
 }
 
 kotlin {
@@ -29,18 +29,20 @@ kotlin {
     }
 
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
-        }
-
         commonMain.dependencies {
             api(libs.compose.foundation)
             api(libs.compose.material3)
-            api(libs.compose.components.resources)
+            implementation(libs.compose.components.resources)
             api(libs.compose.runtime)
             api(libs.compose.ui)
             api(libs.compose.uiToolingPreview)
-            implementation(libs.material.kolor)
+            implementation(libs.kermit)
+            implementation(libs.kermit.koin)
+            api(libs.material.kolor)
+            implementation(libs.lucideIcons)
+            implementation(libs.orbit.compose)
+            implementation(libs.orbit.core)
+            implementation(libs.orbit.viewModel)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.lifecycle.runtime.compose)
             implementation(libs.koin.core)
@@ -57,23 +59,48 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.compose.ui.test)
             implementation(libs.kotest.assertions)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.orbit.test)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.compose.uiToolingPreview)
         }
 
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.coroutines.swing)
         }
 
         all {
             languageSettings.optIn("androidx.compose.ui.test.ExperimentalTestApi")
             languageSettings.optIn("org.koin.core.annotation.KoinExperimentalAPI")
             languageSettings.optIn("androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi")
+            languageSettings.optIn("androidx.compose.material3.ExperimentalMaterial3ExpressiveApi")
         }
     }
+}
+
+compose.resources {
+    packageOfResClass = "dev.appoutlet.outpost.core.generated.resources"
 }
 
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
     detektPlugins(libs.detekt.formatting)
+}
+
+buildkonfig {
+    packageName = "dev.appoutlet.outpost"
+    exposeObjectWithName.set("BuildKonfig")
+
+    defaultConfigs {
+        buildConfigField(FieldSpec.Type.BOOLEAN, "isDebug", "true")
+    }
+
+    defaultConfigs("release") {
+        buildConfigField(FieldSpec.Type.BOOLEAN, "isDebug", "false")
+    }
 }
 
 detekt {
@@ -88,4 +115,12 @@ detekt {
         "src/iosMain/kotlin",
         "src/desktopMain/kotlin",
     )
+}
+
+allOpen {
+    annotations("dev.appoutlet.outpost.core.allopen.Open")
+}
+
+mokkery {
+    stubs.allowConcreteClassInstantiation.set(true)
 }

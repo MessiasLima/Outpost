@@ -9,7 +9,7 @@ import org.koin.compose.KoinApplication
 
 @Composable
 fun App(config: OutpostConfig = outpostConfig()) {
-    KoinApplication(configuration = outpostKoinConfiguration) {
+    KoinApplication(configuration = outpostKoinConfiguration(config)) {
         OutpostTheme(theme = config.theme) {
             Navigation()
         }

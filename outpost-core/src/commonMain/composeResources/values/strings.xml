@@ -1,0 +1,11 @@
+<resources>
+    <!-- region Home -->
+    <string name="home_articles">Articles</string>
+    <string name="home_videos">Videos</string>
+    <string name="home_podcasts">Podcasts</string>
+    <string name="home_profile_a11y">Profile</string>
+    <string name="home_see_more">See more</string>
+    <string name="home_search_title">Can't find it?</string>
+    <string name="home_search_text">Use search to browse everything in the app and find exactly what you're looking for.</string>
+    <!-- endregion -->
+</resources>
