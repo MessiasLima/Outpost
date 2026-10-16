@@ -1,0 +1,53 @@
+{
+  "skill_name": "new-outpost-variant",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a new Outpost variant for the Rust community: rust-outpost.",
+      "expected_output": "The agent runs .agents/skills/new-outpost-variant/scripts/scaffold-variant.sh rust-outpost, which creates rust-outpost/{shared,android,desktop,ios} (23 files, including the Xcode project, the shared bridge composable RustOutpostApp and its UI test) and inserts include(\":rust-outpost:android\"), include(\":rust-outpost:desktop\") and include(\":rust-outpost:shared\") into settings.gradle.kts before include(\":outpost-core\"). Identifiers are derived from the name: package dev.appoutlet.outpost.rust, symbol RustOutpost, iOS framework RustOutpostShared, resources package outpost.rust_outpost.shared.generated.resources, bundle id dev.appoutlet.outpost.Rust. The agent then verifies with the focused tasks (:rust-outpost:shared:jvmTest, :rust-outpost:desktop:compileKotlin, :rust-outpost:shared:compileKotlinIosArm64, :rust-outpost:android:compileDebugKotlin plus :processDebugResources) and reports real results plus the brand follow-ups (icons, theme seed colour, content sources, README/docs entry). No feature, theme, icon or content code is invented and :outpost-core is untouched.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "We want to launch an Outpost for our community. Create the variant for me.",
+      "expected_output": "No variant name is given, so the agent asks for it before writing anything, offering a kebab-case suggestion derived from the brand. Nothing is created and settings.gradle.kts stays unchanged until the user answers.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Add a desktop-only Outpost variant called mycontent, shown as \"My Content\".",
+      "expected_output": "The agent scaffolds with --platforms desktop --display-name \"My Content\". Only shared and desktop are generated (8 files, no android/ or ios/ directory), settings.gradle.kts gains just include(\":mycontent:desktop\") and include(\":mycontent:shared\"), the generated desktop run configuration is named after the display name, and verification uses :mycontent:shared:jvmTest and :mycontent:desktop:compileKotlin. The agent explains that the shared bridge keeps the reference target set, so an Android or iOS app module can be added later.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Scaffold js-outpost, but the Kotlin package must be dev.appoutlet.outpost.javascript, not js.",
+      "expected_output": "The agent runs the scaffold with --package javascript, so the namespace, application id, bundle id and source directories all use the javascript suffix while the variant directory stays js-outpost. It reports the derivation (package dev.appoutlet.outpost.javascript, bundle id dev.appoutlet.outpost.Javascript) instead of renaming files by hand, and verifies the generated modules compile.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "Create the rust-outpost variant and reuse the Kotlin Outpost branding: the purple seed colour, its launcher icons and the JetBrains Kotlin RSS feed.",
+      "expected_output": "The agent scaffolds a brand-neutral variant and refuses the branding request: no Kotlin Outpost theme, icons or feeds are copied, because those are brand decisions and out of scope for the scaffold (issue #39). It reports them as follow-up work for the variant owner instead of hard-coding them, and does not modify :outpost-core.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Create a new variant named kotlin-outpost.",
+      "expected_output": "The scaffold stops with \"kotlin-outpost already exists\" and writes nothing: the variant name is taken and the reference variant must never be regenerated or overwritten.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Create a rust-outpost variant and make sure the whole project still builds.",
+      "expected_output": "The agent scaffolds the variant and verifies it with the focused tasks only. It does not run ./gradlew build, ./gradlew assemble or :outpost-core:allTests, and explains that the repository forbids whole-project tasks because CI (detekt, allTests, koverVerify) covers the new modules once they are in settings.gradle.kts.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Add a web-outpost variant so the same content also ships as a browser app.",
+      "expected_output": "The agent explains that a variant only packages :outpost-core, whose targets are Android, JVM (desktop) and iosArm64/iosSimulatorArm64, so no web module can be scaffolded until the core gains that target. It does not generate an unsupported module and does not promise a browser build; it offers the supported platform set and points the user at the core change that would be needed first.",
+      "files": []
+    }
+  ]
+}
