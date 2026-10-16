@@ -1,79 +1,63 @@
 <div align="center">
   <img src="./docs/outpost-icon.svg" alt="Outpost icon" width="160" height="160" />
   <h1>Outpost</h1>
-  <p>A white-label Kotlin Multiplatform content hub for Android, iOS and Desktop.</p>
+  <p>A configurable, white-label content hub built with Kotlin Multiplatform and Compose Multiplatform.</p>
 </div>
 
 ---
 
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop (JVM).
+Outpost is a shared foundation for branded content apps. Its reusable core provides the shared UI and content features, while each app supplies its own branding and content configuration. The included Kotlin Outpost app is an example targeting Android, iOS, and Desktop (JVM), with articles, videos, and podcasts.
 
-* [Kotlin Outpost iOS app sources](./kotlin-outpost/ios/Kotlin%20Outpost) contain the iOS application entry point. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Platforms
 
-* [/outpost-core](./outpost-core/src) contains the root Kotlin Multiplatform module for shared code and UI.
+- **Android**
+- **iOS** (device and simulator)
+- **Desktop** (JVM)
 
-* [/kotlin-outpost/shared](./kotlin-outpost/shared/src) contains the KotlinOutpost bridge module that fronts the platform apps.
+## Project structure
 
-* [/outpost-core](./outpost-core/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./outpost-core/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./outpost-core/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./outpost-core/src/jvmMain/kotlin)
-    folder is the appropriate location.
+- [`outpost-core/`](./outpost-core/) — reusable Kotlin Multiplatform code, shared UI, configuration, and content features.
+- [`kotlin-outpost/shared/`](./kotlin-outpost/shared/) — the Kotlin Outpost app configuration and bridge used by the platform apps. Its `KotlinOutpostApp.kt` configures the app's theme, metadata, and content sources.
+- [`kotlin-outpost/android/`](./kotlin-outpost/android/) — Android application.
+- [`kotlin-outpost/desktop/`](./kotlin-outpost/desktop/) — Desktop application.
+- [`kotlin-outpost/ios/`](./kotlin-outpost/ios/) — Xcode project and Swift app entry point for iOS.
 
-### Running the apps
+## Get started
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+Install JDK 21. To run a platform app, use the IDE run configuration or the platform-specific instructions below. Android development also requires the Android SDK; running the iOS app requires macOS and Xcode.
 
-- Android app: `./gradlew :kotlin-outpost:android:assembleDebug`
-- Desktop app:
-  - Hot reload: `./gradlew :kotlin-outpost:desktop:hotRun --auto`
-  - Standard run: `./gradlew :kotlin-outpost:desktop:run`
-- iOS app: open the [/kotlin-outpost/ios](./kotlin-outpost/ios) directory in Xcode and run it from there.
+### Android
 
-### Running tests
-
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
-
-- Android tests: `./gradlew :outpost-core:testAndroidHostTest`
-- Desktop tests: `./gradlew :outpost-core:jvmTest`
-- iOS tests: `./gradlew :outpost-core:iosSimulatorArm64Test`
-
-### Static analysis
-
-This project uses [Detekt](https://detekt.dev/) for Kotlin static analysis. The Detekt plugin is applied to every module and runs with auto-correction and the formatting rule set enabled.
-
-Run Detekt from the repository root:
+Open the project in Android Studio and run the Android app configuration. To build a debug APK from the command line:
 
 ```bash
-./gradlew detekt
+./gradlew :kotlin-outpost:android:assembleDebug
 ```
 
-### Continuous integration
+### Desktop
 
-Pull requests targeting `main` run the checks defined in
-[`.github/workflows/pull-request.yml`](./.github/workflows/pull-request.yml):
+Run the desktop app with Gradle:
 
-- **Detekt** — static analysis, via `./gradlew detekt`.
-- **Kover coverage verification** — runs the JVM tests and enforces the minimum
-  coverage rule, via `./gradlew :outpost-core:jvmTest :kotlin-outpost:shared:jvmTest koverVerify -Pkover`.
+```bash
+./gradlew :kotlin-outpost:desktop:run
+```
 
-Both checks must pass before a pull request can be merged. The workflow uses the
-Gradle wrapper, so the commands above reproduce it locally. Note that the Kover
-aggregation plugin only measures coverage for tests executed in the same build,
-which is why the `-Pkover` flag is required.
+### iOS
 
-### Security
+Open [`Kotlin Outpost.xcodeproj`](./kotlin-outpost/ios/Kotlin%20Outpost.xcodeproj) in Xcode, select a simulator or device, and run the app.
 
-If you discover a security vulnerability in Outpost or in any app built on top of Outpost, please review our [Security Policy](./SECURITY.md) for responsible disclosure instructions.
+## Tests
 
-### License
+Run the shared core and app bridge JVM tests from the repository root:
 
-Outpost and all the apps made with it are licensed under the [GNU General Public License v3.0](./LICENSE).
+```bash
+./gradlew :outpost-core:jvmTest :kotlin-outpost:shared:jvmTest
+```
 
----
+## Security
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+For responsible disclosure, see the [Security Policy](./SECURITY.md).
+
+## License
+
+Outpost and the apps built with it are licensed under the [GNU General Public License v3.0](./LICENSE).
