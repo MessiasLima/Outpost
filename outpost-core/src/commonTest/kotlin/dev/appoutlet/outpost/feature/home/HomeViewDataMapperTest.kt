@@ -1,6 +1,7 @@
 package dev.appoutlet.outpost.feature.home
 
-import dev.appoutlet.outpost.core.config.*
+import dev.appoutlet.outpost.core.config.OutpostConfig
+import dev.appoutlet.outpost.core.config.fixture
 import io.kotest.matchers.shouldBe
 import kotlin.test.Test
 

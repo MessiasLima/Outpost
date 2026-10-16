@@ -30,6 +30,10 @@ NEVER manually build domain or entity objects inside tests when the object can b
 9. MUST only override fixture defaults when the test case REQUIRES a non-default value. Fixture defaults already represent realistic objects, so restating the same value adds noise and makes tests longer without improving coverage. Read [`references/fixture.md`](./references/fixture.md) for details.
 10. MUST combine test cases that can be verified together in the same test function. For example, when a single production call produces both a header and a list of sections, assert the header and the sections together in one test instead of splitting them into separate tests.
 
+## ViewModel Unit Tests
+
+When writing, updating, or reviewing ViewModel unit tests, MUST follow [`templates/viewmodel-unit-test.md`](./templates/viewmodel-unit-test.md). It describes the shared `ViewModelTest` base class, dispatcher setup, Orbit state/effect assertions, and initial-state handling.
+
 ## UI Tests
 
 MUST follow the existing Compose Multiplatform UI tests in `commonTest`. UI tests MUST exercise composables as state renderers by passing explicit `viewData` and capturing `onEvent`. MUST NOT use full app, Koin, real ViewModels, or navigation setup in UI tests.
