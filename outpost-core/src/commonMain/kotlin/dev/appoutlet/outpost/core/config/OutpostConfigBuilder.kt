@@ -3,7 +3,7 @@ package dev.appoutlet.outpost.core.config
 @OutpostConfigDsl
 class OutpostConfigBuilder {
     var theme = OutpostConfig.Theme.Default
-    lateinit var appMetadata: AppMetadata
+    var appMetadata = AppMetadataBuilder().build()
     var content: List<Content> = emptyList()
 
     fun theme(themeSetup: OutpostConfigThemeBuilder.() -> Unit) {

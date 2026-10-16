@@ -7,17 +7,7 @@ data class AppMetadata(
 
 class AppMetadataBuilder {
     var title: String = ""
-        get(): String {
-            require(field.isNotBlank()) { "Title cannot be blank" }
-            return field
-        }
-
     var headline: String = ""
-        get() {
-            require(field.isNotBlank()) { "Headline cannot be blank" }
-            return field
-        }
-
     fun build() = AppMetadata(title, headline)
 }
 
