@@ -16,12 +16,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.composables.icons.lucide.Lucide
@@ -41,10 +43,15 @@ import org.jetbrains.compose.resources.stringResource
 fun HomeScreen(state: HomeState) {
     AnimatedContent(targetState = state, contentKey = { it::class }) { homeState ->
         when (homeState) {
-            HomeState.Idle -> {}
+            HomeState.Idle -> HomeScreenIdle()
             is HomeState.Success -> HomeScreenSuccess(homeState.viewData)
         }
     }
+}
+
+@Composable
+private fun HomeScreenIdle() {
+    LoadingIndicator(modifier = Modifier.testTag("HomeScreen:LoadingIndicator"))
 }
 
 @Composable
