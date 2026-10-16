@@ -2,7 +2,9 @@ package dev.appoutlet.outpost.core.config
 
 data class Podcasts(
     val sources: List<PodcastSource>,
-) : Content()
+) : Content() {
+    companion object
+}
 
 sealed interface PodcastSource
 

@@ -2,7 +2,9 @@ package dev.appoutlet.outpost.core.config
 
 data class Articles(
     val sources: List<ArticleSource>,
-) : Content()
+) : Content() {
+    companion object
+}
 
 sealed interface ArticleSource
 

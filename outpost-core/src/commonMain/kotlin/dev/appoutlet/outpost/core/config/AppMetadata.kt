@@ -3,7 +3,9 @@ package dev.appoutlet.outpost.core.config
 data class AppMetadata(
     val title: String,
     val headline: String,
-)
+) {
+    companion object
+}
 
 class AppMetadataBuilder {
     var title: String = ""

@@ -22,4 +22,6 @@ data class OutpostConfig(
             )
         }
     }
+
+    companion object
 }
