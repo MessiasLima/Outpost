@@ -8,9 +8,7 @@
 - Platform entrypoints: Android `kotlin-outpost/android/src/main/kotlin/dev/appoutlet/outpost/kotlin/android/MainActivity.kt`, Desktop `kotlin-outpost/desktop/src/main/kotlin/dev/appoutlet/outpost/kotlin/desktop/Main.kt`, iOS `kotlin-outpost/shared/src/iosMain/kotlin/dev/appoutlet/outpost/kotlin/MainViewController.kt` with the Xcode project in `kotlin-outpost/ios/Kotlin Outpost.xcodeproj`.
 
 ## Commands
-- Shared module tests: `./gradlew :outpost-core:jvmTest`
-- Reinstall git hooks: `./gradlew :installGitHooks` (also auto-runs on Gradle model prep / IDE sync).
-- Use only focused test tasks needed for the files or target you changed.
+- Use only focused test tasks needed for the files or target you changed. When verifying a specific change, run the narrowest test task or class possible (e.g. `./gradlew :outpost-core:jvmTest --tests "dev.appoutlet.outpost.feature.home.HomeViewDataMapperTest"`) instead of the full module or project test suite.
 - NEVER run `:outpost-core:allTests`, `build`, or `assemble` unless the user explicitly asks for them.
 
 ## Quirks
