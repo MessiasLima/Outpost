@@ -41,6 +41,7 @@ kotlin {
             implementation(libs.kermit)
             implementation(libs.kermit.koin)
             api(libs.material.kolor)
+            implementation(libs.lucideIcons)
             implementation(libs.orbit.compose)
             implementation(libs.orbit.core)
             implementation(libs.orbit.viewModel)

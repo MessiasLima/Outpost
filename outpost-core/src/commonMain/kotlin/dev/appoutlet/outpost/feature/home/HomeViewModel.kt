@@ -19,7 +19,12 @@ sealed interface HomeState {
     data class Success(val viewData: HomeViewData) : HomeState
 }
 
-data class HomeViewData(val sections: List<Section>) {
+data class HomeViewData(val header: Header, val sections: List<Section>) {
+    data class Header(
+        val title: String,
+        val headline: String,
+    )
+
     sealed interface Section {
         data object Articles : Section
         data object Videos : Section

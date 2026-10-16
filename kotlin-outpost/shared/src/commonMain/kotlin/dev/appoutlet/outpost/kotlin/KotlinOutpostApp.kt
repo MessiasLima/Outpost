@@ -21,29 +21,31 @@ fun KotlinOutpostApp() {
     val appTitle = stringResource(Res.string.app_name)
     val appHeadline = stringResource(Res.string.app_headline)
 
-    App(config = outpostConfig {
-        theme {
-            seedColor = KotlinColor
-            style = PaletteStyle.Fidelity
-        }
-
-        app {
-            title = appTitle
-            headline = appHeadline
-        }
-
-        content {
-            articles {
-                rss("https://blog.jetbrains.com/kotlin/feed/")
+    App(
+        config = outpostConfig {
+            theme {
+                seedColor = KotlinColor
+                style = PaletteStyle.Fidelity
             }
 
-            videos {
-                youtubeChannel("UC5DwS2-lzqd3Vcv9Ai85kgQ")
+            app {
+                title = appTitle
+                headline = appHeadline
             }
 
-            podcasts {
-                rss("https://feeds.megaphone.fm/JNPD1328829962.xml")
+            content {
+                articles {
+                    rss("https://blog.jetbrains.com/kotlin/feed/")
+                }
+
+                videos {
+                    youtubeChannel("UC5DwS2-lzqd3Vcv9Ai85kgQ")
+                }
+
+                podcasts {
+                    rss("https://feeds.megaphone.fm/JNPD1328829962.xml")
+                }
             }
         }
-    })
+    )
 }
