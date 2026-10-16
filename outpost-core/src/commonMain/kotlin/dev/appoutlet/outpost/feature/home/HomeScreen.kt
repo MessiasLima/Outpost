@@ -28,15 +28,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.composables.icons.lucide.Lucide
 import com.composables.icons.lucide.User
+import dev.appoutlet.outpost.core.generated.resources.Res
+import dev.appoutlet.outpost.core.generated.resources.home_articles
+import dev.appoutlet.outpost.core.generated.resources.home_podcasts
+import dev.appoutlet.outpost.core.generated.resources.home_profile_a11y
+import dev.appoutlet.outpost.core.generated.resources.home_search_text
+import dev.appoutlet.outpost.core.generated.resources.home_search_title
+import dev.appoutlet.outpost.core.generated.resources.home_see_more
+import dev.appoutlet.outpost.core.generated.resources.home_videos
 import dev.appoutlet.outpost.core.ui.modifier.widthInCompact
-import dev.appoutlet.outpost.generated.resources.Res
-import dev.appoutlet.outpost.generated.resources.home_articles
-import dev.appoutlet.outpost.generated.resources.home_podcasts
-import dev.appoutlet.outpost.generated.resources.home_profile_a11y
-import dev.appoutlet.outpost.generated.resources.home_search_text
-import dev.appoutlet.outpost.generated.resources.home_search_title
-import dev.appoutlet.outpost.generated.resources.home_see_more
-import dev.appoutlet.outpost.generated.resources.home_videos
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

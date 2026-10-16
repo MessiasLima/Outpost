@@ -4,10 +4,10 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.v2.runComposeUiTest
-import dev.appoutlet.outpost.generated.resources.Res
-import dev.appoutlet.outpost.generated.resources.home_articles
-import dev.appoutlet.outpost.generated.resources.home_podcasts
-import dev.appoutlet.outpost.generated.resources.home_videos
+import dev.appoutlet.outpost.core.generated.resources.Res
+import dev.appoutlet.outpost.core.generated.resources.home_articles
+import dev.appoutlet.outpost.core.generated.resources.home_podcasts
+import dev.appoutlet.outpost.core.generated.resources.home_videos
 import org.jetbrains.compose.resources.getString
 import kotlin.test.Test
 

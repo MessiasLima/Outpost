@@ -1,10 +1,12 @@
 package dev.appoutlet.outpost.feature.home
 
+import dev.appoutlet.outpost.core.allopen.Open
 import dev.appoutlet.outpost.core.config.Articles
 import dev.appoutlet.outpost.core.config.OutpostConfig
 import dev.appoutlet.outpost.core.config.Podcasts
 import dev.appoutlet.outpost.core.config.Videos
 
+@Open
 class HomeViewDataMapper(private val config: OutpostConfig) {
     fun map(): HomeViewData {
         return HomeViewData(

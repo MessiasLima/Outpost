@@ -8,12 +8,10 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.detekt)
     alias(libs.plugins.koin.compiler)
+    alias(libs.plugins.allopen)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.mokkery)
     alias(libs.plugins.serialization)
-}
-
-compose.resources {
-    packageOfResClass = "dev.appoutlet.outpost.generated.resources"
 }
 
 kotlin {
@@ -61,6 +59,7 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.compose.ui.test)
             implementation(libs.kotest.assertions)
+            implementation(libs.kotlinx.coroutines.test)
             implementation(libs.orbit.test)
         }
 
@@ -80,6 +79,10 @@ kotlin {
             languageSettings.optIn("androidx.compose.material3.ExperimentalMaterial3ExpressiveApi")
         }
     }
+}
+
+compose.resources {
+    packageOfResClass = "dev.appoutlet.outpost.core.generated.resources"
 }
 
 dependencies {
@@ -112,4 +115,12 @@ detekt {
         "src/iosMain/kotlin",
         "src/desktopMain/kotlin",
     )
+}
+
+allOpen {
+    annotations("dev.appoutlet.outpost.core.allopen.Open")
+}
+
+mokkery {
+    stubs.allowConcreteClassInstantiation.set(true)
 }
