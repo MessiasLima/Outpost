@@ -11,7 +11,9 @@ dependencies {
     implementation(projects.kotlinOutpost.shared)
     implementation(compose.desktop.currentOs)
     implementation(libs.coroutines.swing)
+    implementation(libs.compose.ui)
     implementation(libs.compose.uiToolingPreview)
+    implementation(libs.compose.components.resources)
     detektPlugins(libs.detekt.formatting)
 }
 
@@ -23,6 +25,18 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "dev.appoutlet.outpost.kotlin.desktop"
             packageVersion = "1.0.0"
+
+            macOS {
+                iconFile.set(project.file("icon/icon.icns"))
+            }
+
+            windows {
+                iconFile.set(project.file("icon/icon.ico"))
+            }
+
+            linux {
+                iconFile.set(project.file("icon/icon.png"))
+            }
         }
     }
 }
