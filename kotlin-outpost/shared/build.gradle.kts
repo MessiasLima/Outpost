@@ -34,13 +34,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.outpostCore)
             implementation(libs.compose.components.resources)
+            implementation(projects.outpostCore)
         }
 
         commonTest.dependencies {
-            implementation(libs.kotlin.test)
             implementation(libs.compose.ui.test)
+            implementation(libs.kotlin.test)
         }
 
         jvmMain.dependencies {
