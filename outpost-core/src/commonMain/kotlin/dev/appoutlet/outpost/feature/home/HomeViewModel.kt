@@ -23,13 +23,17 @@ data class HomeViewData(val header: Header, val sections: List<Section>) {
     data class Header(
         val title: String,
         val headline: String,
-    )
+    ) {
+        companion object
+    }
 
     sealed interface Section {
         data object Articles : Section
         data object Videos : Section
         data object Podcasts : Section
     }
+
+    companion object
 }
 
 sealed interface HomeSideEffect

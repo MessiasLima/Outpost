@@ -23,6 +23,9 @@ Read this file before creating or updating any fixture function.
 6. When a parameter type is a collection, the default value must contain at least one element.
 7. Do not invent fixture-only parameters. The fixture signature must mirror the entity constructor.
 8. Do not reorder parameters in the fixture.
+9. The entity class must expose a `companion object` so the fixture can be declared as `fun Entity.Companion.fixture(...)`.
+10. The `companion object` must be the last element in the class body.
+11. If the entity does not already have a `companion object`, create an empty one
 
 ## Default Value Guidance
 

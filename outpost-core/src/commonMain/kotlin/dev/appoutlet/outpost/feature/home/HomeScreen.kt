@@ -79,6 +79,7 @@ private fun HomeScreenHeader(header: HomeViewData.Header) {
             end = 16.dp,
             bottom = 8.dp,
         ).fillMaxWidth(),
+
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Column(Modifier.weight(1f)) {
@@ -91,7 +92,7 @@ private fun HomeScreenHeader(header: HomeViewData.Header) {
             Text(text = header.headline)
         }
 
-        FilledTonalIconButton(onClick = {}) {
+        FilledTonalIconButton(modifier = Modifier.testTag("HomeScreen:ProfileButton"), onClick = {}) {
             Icon(
                 imageVector = Lucide.User,
                 contentDescription = stringResource(Res.string.home_profile_a11y)
@@ -142,7 +143,7 @@ private fun Section(title: String, onSeeMoreClick: () -> Unit, content: @Composa
 @Composable
 private fun SearchPanel() {
     val bottomPadding = WindowInsets.safeDrawing.asPaddingValues().calculateBottomPadding() + 8.dp
-    Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+    Box(Modifier.testTag("HomeScreen:SearchPanel").fillMaxWidth(), contentAlignment = Alignment.Center) {
         Card(
             modifier = Modifier.widthInCompact().padding(
                 top = 8.dp,
