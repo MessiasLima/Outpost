@@ -19,9 +19,31 @@ fun `should return tasks due today and overdue tasks`() = runTest {
 }
 ```
 
+Use this shape for mapper tests and other unit tests that transform a fixture into a structured result.
+
+```kotlin
+private val fixtureOutpostConfig = OutpostConfig.fixture()
+private val subject = HomeViewDataMapper(fixtureOutpostConfig)
+
+@Test
+fun `should map config metadata and content to view data`() {
+    val result = subject.map()
+
+    result.header.title shouldBe fixtureOutpostConfig.appMetadata.title
+    result.header.headline shouldBe fixtureOutpostConfig.appMetadata.headline
+    result.sections shouldBe listOf(
+        HomeViewData.Section.Articles,
+        HomeViewData.Section.Videos,
+        HomeViewData.Section.Podcasts,
+    )
+}
+```
+
 ## Notes
 
-1. Use Mokkery for collaborators.
-2. Prefer fixtures for returned objects.
-3. For `Flow`-based APIs, stub with `flowOf(...)` and assert with `.first()`.
-4. Keep the test focused on the unit boundary instead of persistence details.
+1. Create the `subject` at the class level so every test exercises the same production instance.
+2. Use Mokkery for collaborators.
+3. Prefer fixtures for returned objects and inputs.
+4. For `Flow`-based APIs, stub with `flowOf(...)` and assert with `.first()`.
+5. Keep the test focused on the unit boundary instead of persistence details.
+6. When the result contains multiple fields, assert each field individually against the fixture/input values. This makes the failing value obvious instead of reporting a generic whole-object mismatch.
