@@ -27,6 +27,8 @@ NEVER manually build domain or entity objects inside tests when the object can b
 6. MUST mock collaborators instead of standing up integration infrastructure unless the test is explicitly integration-oriented.
 7. MUST use Mokkery with patterns like `mock<T>()`, `every { ... } returns ...`, and `verifySuspend { ... }` when verification is REQUIRED.
 8. Mokkery CANNOT mock final classes, and Kotlin classes are final by default, so regular classes that tests mock MUST be annotated with `@Open`.
+9. MUST only override fixture defaults when the test case REQUIRES a non-default value. Fixture defaults already represent realistic objects, so restating the same value adds noise and makes tests longer without improving coverage. Read [`references/fixture.md`](./references/fixture.md) for details.
+10. MUST combine test cases that can be verified together in the same test function. For example, when a single production call produces both a header and a list of sections, assert the header and the sections together in one test instead of splitting them into separate tests.
 
 ## UI Tests
 
