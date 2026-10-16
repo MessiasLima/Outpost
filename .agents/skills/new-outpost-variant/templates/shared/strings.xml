@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">{{DISPLAY}}</string>
+    <string name="app_headline">The latest from {{DISPLAY}}.</string>
+</resources>

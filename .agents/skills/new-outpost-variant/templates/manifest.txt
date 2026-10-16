@@ -1,0 +1,33 @@
+# Files a new Outpost variant is scaffolded from: "module | source | destination".
+#
+# module       one of android, desktop, ios, shared. shared is always written; the platform
+#              modules are written only when they are selected with --platforms. The desktop
+#              module also owns the IDE run configuration.
+# source       relative to this directory, except entries prefixed with "repo/", which are
+#              files copied from the repository and rewritten with the reference app tokens
+#              (Kotlin Outpost, kotlin-outpost, KotlinOutpostShared, dev.appoutlet.outpost.Kotlin).
+# destination  relative to the new variant directory. Destinations and file contents are
+#              rendered with the placeholders described in ../references/generated-structure.md.
+shared  | templates/shared/build.gradle.kts                                | shared/build.gradle.kts
+shared  | templates/shared/App.kt                                          | shared/src/commonMain/kotlin/dev/appoutlet/outpost/{{PKG_PATH}}/{{SYMBOL}}App.kt
+shared  | templates/shared/AppTest.kt                                      | shared/src/commonTest/kotlin/dev/appoutlet/outpost/{{PKG_PATH}}/{{SYMBOL}}AppTest.kt
+shared  | templates/shared/MainViewController.kt                           | shared/src/iosMain/kotlin/dev/appoutlet/outpost/{{PKG_PATH}}/MainViewController.kt
+shared  | templates/shared/strings.xml                                     | shared/src/commonMain/composeResources/values/strings.xml
+android | templates/android/build.gradle.kts                               | android/build.gradle.kts
+android | templates/android/AndroidManifest.xml                            | android/src/main/AndroidManifest.xml
+android | templates/android/strings.xml                                    | android/src/main/res/values/strings.xml
+android | templates/android/MainActivity.kt                                | android/src/main/kotlin/dev/appoutlet/outpost/{{PKG_PATH}}/android/MainActivity.kt
+desktop | templates/desktop/build.gradle.kts                               | desktop/build.gradle.kts
+desktop | templates/desktop/Main.kt                                        | desktop/src/main/kotlin/dev/appoutlet/outpost/{{PKG_PATH}}/desktop/Main.kt
+desktop | templates/run/DesktopHotReload.run.xml                           | .run/Desktop - Hot reload ({{DISPLAY}}).run.xml
+ios     | templates/ios/Config.xcconfig                                    | ios/Configuration/Config.xcconfig
+ios     | templates/ios/iOSApp.swift                                       | ios/{{DISPLAY}}/iOSApp.swift
+ios     | templates/ios/ContentView.swift                                  | ios/{{DISPLAY}}/ContentView.swift
+ios     | templates/ios/Info.plist                                         | ios/{{DISPLAY}}/Info.plist
+ios     | templates/ios/Assets.xcassets/Contents.json                      | ios/{{DISPLAY}}/Assets.xcassets/Contents.json
+ios     | templates/ios/Assets.xcassets/AppIcon.appiconset/Contents.json   | ios/{{DISPLAY}}/Assets.xcassets/AppIcon.appiconset/Contents.json
+ios     | templates/ios/Assets.xcassets/AccentColor.colorset/Contents.json | ios/{{DISPLAY}}/Assets.xcassets/AccentColor.colorset/Contents.json
+ios     | templates/ios/Preview Assets.xcassets/Contents.json              | ios/{{DISPLAY}}/Preview Content/Preview Assets.xcassets/Contents.json
+ios     | templates/ios/Scheme.xcscheme                                    | ios/{{DISPLAY}}.xcodeproj/xcshareddata/xcschemes/{{DISPLAY}}.xcscheme
+ios     | templates/ios/project.xcworkspace/contents.xcworkspacedata       | ios/{{DISPLAY}}.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+ios     | repo/kotlin-outpost/ios/Kotlin Outpost.xcodeproj/project.pbxproj | ios/{{DISPLAY}}.xcodeproj/project.pbxproj
